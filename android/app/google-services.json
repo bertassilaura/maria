@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649511301140",
+    "project_id": "maria-4e4eb",
+    "storage_bucket": "maria-4e4eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649511301140:android:454b409702a42decfab701",
+        "android_client_info": {
+          "package_name": "com.mycompany.maria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJVb9GPBSaJ33A6XxPfVJoyHRJZxjGWv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
