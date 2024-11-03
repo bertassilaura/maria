@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -72,23 +73,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const LoginWidget() : const CriarContaWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const LoginWidget() : const CriarContaWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
         ),
         FFRoute(
-          name: 'CriarConta',
-          path: '/criarConta',
-          builder: (context, params) => const CriarContaWidget(),
+          name: 'Home',
+          path: '/home',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Home') : const HomeWidget(),
         ),
         FFRoute(
           name: 'Login',
           path: '/login',
           builder: (context, params) => const LoginWidget(),
+        ),
+        FFRoute(
+          name: 'Cadastrar',
+          path: '/cadastrar',
+          builder: (context, params) => const CadastrarWidget(),
+        ),
+        FFRoute(
+          name: 'Sobre',
+          path: '/sobre',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Sobre') : const SobreWidget(),
+        ),
+        FFRoute(
+          name: 'Dicas',
+          path: '/dicas',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Dicas') : const DicasWidget(),
+        ),
+        FFRoute(
+          name: 'MariaDaPenha',
+          path: '/mariaDaPenha',
+          builder: (context, params) => const MariaDaPenhaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -259,7 +283,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/criarConta';
+            return '/login';
           }
           return null;
         },
