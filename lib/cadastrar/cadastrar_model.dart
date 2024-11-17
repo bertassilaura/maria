@@ -6,26 +6,35 @@ class CadastrarModel extends FlutterFlowModel<CadastrarWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Email widget.
-  FocusNode? emailFocusNode1;
-  TextEditingController? emailTextController1;
-  String? Function(BuildContext, String?)? emailTextController1Validator;
-  // State field(s) for Email widget.
-  FocusNode? emailFocusNode2;
-  TextEditingController? emailTextController2;
-  late bool emailVisibility;
-  String? Function(BuildContext, String?)? emailTextController2Validator;
+  FocusNode? emailFocusNode;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  // State field(s) for Senha widget.
+  FocusNode? senhaFocusNode;
+  TextEditingController? senhaTextController;
+  late bool senhaVisibility;
+  String? Function(BuildContext, String?)? senhaTextControllerValidator;
+  // State field(s) for SenhaConfirma widget.
+  FocusNode? senhaConfirmaFocusNode;
+  TextEditingController? senhaConfirmaTextController;
+  late bool senhaConfirmaVisibility;
+  String? Function(BuildContext, String?)? senhaConfirmaTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    emailVisibility = false;
+    senhaVisibility = false;
+    senhaConfirmaVisibility = false;
   }
 
   @override
   void dispose() {
-    emailFocusNode1?.dispose();
-    emailTextController1?.dispose();
+    emailFocusNode?.dispose();
+    emailTextController?.dispose();
 
-    emailFocusNode2?.dispose();
-    emailTextController2?.dispose();
+    senhaFocusNode?.dispose();
+    senhaTextController?.dispose();
+
+    senhaConfirmaFocusNode?.dispose();
+    senhaConfirmaTextController?.dispose();
   }
 }

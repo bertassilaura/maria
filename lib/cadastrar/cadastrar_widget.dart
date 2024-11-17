@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -22,11 +23,14 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
     super.initState();
     _model = createModel(context, () => CadastrarModel());
 
-    _model.emailTextController1 ??= TextEditingController(text: 'e-mail');
-    _model.emailFocusNode1 ??= FocusNode();
+    _model.emailTextController ??= TextEditingController();
+    _model.emailFocusNode ??= FocusNode();
 
-    _model.emailTextController2 ??= TextEditingController(text: 'senha');
-    _model.emailFocusNode2 ??= FocusNode();
+    _model.senhaTextController ??= TextEditingController();
+    _model.senhaFocusNode ??= FocusNode();
+
+    _model.senhaConfirmaTextController ??= TextEditingController();
+    _model.senhaConfirmaFocusNode ??= FocusNode();
   }
 
   @override
@@ -61,29 +65,35 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
-                            'assets/images/Group_75_(1).png',
-                            fit: BoxFit.cover,
+                            'assets/images/Group_75.png',
+                            width: 170.0,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Cadastre-se agora (é rapidinho)',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ],
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'cadastre-se agora (é rapidinho)',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -92,7 +102,7 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: Container(
                   width: 290.0,
-                  height: 100.0,
+                  height: 177.0,
                   decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -107,8 +117,8 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                               child: SizedBox(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.emailTextController1,
-                                  focusNode: _model.emailFocusNode1,
+                                  controller: _model.emailTextController,
+                                  focusNode: _model.emailFocusNode,
                                   autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -127,9 +137,10 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Outfit',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
+                                          fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
@@ -172,10 +183,10 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                                         color: const Color(0x97FFFFFF),
                                         letterSpacing: 0.0,
                                       ),
+                                  keyboardType: TextInputType.emailAddress,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
-                                  validator: _model
-                                      .emailTextController1Validator
+                                  validator: _model.emailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -183,98 +194,203 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                           ],
                         ),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              width: 200.0,
-                              child: TextFormField(
-                                controller: _model.emailTextController2,
-                                focusNode: _model.emailFocusNode2,
-                                autofocus: false,
-                                obscureText: !_model.emailVisibility,
-                                decoration: InputDecoration(
-                                  isDense: true,
-                                  labelText: 'Qual sua senha?',
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                width: 200.0,
+                                child: TextFormField(
+                                  controller: _model.senhaTextController,
+                                  focusNode: _model.senhaFocusNode,
+                                  autofocus: false,
+                                  obscureText: !_model.senhaVisibility,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    labelText: 'Qual sua senha?',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          fontSize: 20.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
+                                        width: 3.0,
                                       ),
-                                  hintText: 'e-mail',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    filled: true,
+                                    suffixIcon: InkWell(
+                                      onTap: () => safeSetState(
+                                        () => _model.senhaVisibility =
+                                            !_model.senhaVisibility,
+                                      ),
+                                      focusNode: FocusNode(skipTraversal: true),
+                                      child: Icon(
+                                        _model.senhaVisibility
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined,
+                                        color: Colors.white,
+                                        size: 25.0,
+                                      ),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                        color: const Color(0x97FFFFFF),
                                         letterSpacing: 0.0,
                                       ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      width: 3.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 3.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 3.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 3.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  suffixIcon: InkWell(
-                                    onTap: () => safeSetState(
-                                      () => _model.emailVisibility =
-                                          !_model.emailVisibility,
-                                    ),
-                                    focusNode: FocusNode(skipTraversal: true),
-                                    child: Icon(
-                                      _model.emailVisibility
-                                          ? Icons.visibility_outlined
-                                          : Icons.visibility_off_outlined,
-                                      color: Colors.white,
-                                      size: 25.0,
-                                    ),
-                                  ),
+                                  cursorColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  validator: _model.senhaTextControllerValidator
+                                      .asValidator(context),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      color: const Color(0x97FFFFFF),
-                                      letterSpacing: 0.0,
-                                    ),
-                                cursorColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                validator: _model.emailTextController2Validator
-                                    .asValidator(context),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                width: 200.0,
+                                child: TextFormField(
+                                  controller:
+                                      _model.senhaConfirmaTextController,
+                                  focusNode: _model.senhaConfirmaFocusNode,
+                                  autofocus: false,
+                                  obscureText: !_model.senhaConfirmaVisibility,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    labelText: 'Confirme sua senha',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          fontSize: 20.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 3.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    filled: true,
+                                    suffixIcon: InkWell(
+                                      onTap: () => safeSetState(
+                                        () => _model.senhaConfirmaVisibility =
+                                            !_model.senhaConfirmaVisibility,
+                                      ),
+                                      focusNode: FocusNode(skipTraversal: true),
+                                      child: Icon(
+                                        _model.senhaConfirmaVisibility
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined,
+                                        color: Colors.white,
+                                        size: 25.0,
+                                      ),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: const Color(0x97FFFFFF),
+                                        letterSpacing: 0.0,
+                                      ),
+                                  cursorColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  validator: _model
+                                      .senhaConfirmaTextControllerValidator
+                                      .asValidator(context),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -283,7 +399,7 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Container(
-                  width: 100.0,
+                  width: 122.0,
                   height: 100.0,
                   decoration: const BoxDecoration(),
                   child: Row(
@@ -291,8 +407,74 @@ class _CadastrarWidgetState extends State<CadastrarWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          if ((_model.emailTextController.text != '') &&
+                              (_model.senhaTextController.text != '') &&
+                              (_model.senhaConfirmaTextController.text !=
+                                      '')) {
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (_model.senhaTextController.text !=
+                                _model.senhaConfirmaTextController.text) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Passwords don\'t match!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              _model.emailTextController.text,
+                              _model.senhaTextController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            context.pushNamedAuth('Perfil', context.mounted);
+
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title:
+                                      const Text('Sua conta foi criada com sucesso!'),
+                                  content: const Text(
+                                      'Para finalizar seu cadastro, preencha as informações de contato de emergência!'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: const Text(
+                                      'Campos obrigatórios não preenchidos'),
+                                  content: const Text(
+                                      'Para incluir o contato de emergência, os campos de nome e número são obrigatórios.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
                         },
                         text: 'Criar conta',
                         options: FFButtonOptions(

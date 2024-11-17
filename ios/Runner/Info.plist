@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>maria</string>
+	<string>maria_</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -54,7 +54,8 @@
 	<true/>
 
 
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Você necessita habilitar a permissão de acesso à localização do seu telefone para uso das funcionalidades.</string>
 
 
 	<key>UILaunchStoryboardName</key>

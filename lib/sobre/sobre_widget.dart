@@ -38,116 +38,114 @@ class _SobreWidgetState extends State<SobreWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            30.0, 0.0, 30.0, 0.0),
-                        child: Container(
-                          width: 375.0,
-                          height: 100.0,
-                          decoration: const BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/Group_28_1.png',
-                                      fit: BoxFit.cover,
-                                      alignment: const Alignment(-1.0, -1.0),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Sobre o maria_',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            fontSize: 25.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 10.0),
+                child: Container(
+                  width: 449.0,
+                  height: 89.0,
+                  decoration: const BoxDecoration(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/Group_73.png',
+                              width: 160.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ),
-                    Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            40.0, 30.0, 40.0, 0.0),
-                        child: Container(
-                          width: 351.0,
-                          height: 590.0,
-                          decoration: const BoxDecoration(),
-                          child: Text(
-                            'Desenvolvido na Universidade Federal de Santa Catarina, o maria_ foi projetado para funcionar como uma ferramenta prática e acessível, permitindo que mulheres em situação de vulnerabilidade possam solicitar ajuda de maneira discreta e rápida.\n\n Com funcionalidades como geolocalização, alertas automáticos para contatos de confiança e acesso a informações sobre direitos e serviços de apoio, o aplicativo visa aumentar a autonomia e a segurança da mulher, possibilitando uma resposta ágil em situações emergenciais.\n\nOriginado de um projeto de TCC, maria_ reflete a importância de usar a tecnologia como um recurso de proteção e conscientização, promovendo um ambiente mais seguro e informativo para as mulheres.',
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'sobre',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Outfit',
-                                  fontSize: 17.0,
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  fontSize: 25.0,
                                   letterSpacing: 0.0,
-                                  lineHeight: 1.5,
+                                  fontWeight: FontWeight.w500,
                                 ),
                           ),
-                        ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                  child: Container(
-                    width: 460.0,
-                    height: 100.0,
-                    decoration: const BoxDecoration(),
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          100.0, 0.0, 100.0, 0.0),
-                      child: Text(
-                        'Pra toda maria se sentir segura.',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Outfit',
-                              color: FlutterFlowTheme.of(context).secondary,
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                child: Container(
+                  width: 444.0,
+                  height: 435.0,
+                  decoration: const BoxDecoration(),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'Desenvolvido na Universidade Federal de Santa Catarina, o maria_ foi projetado para funcionar como uma ferramenta prática e acessível, permitindo que mulheres em situação de vulnerabilidade possam solicitar ajuda de maneira discreta e rápida.\n\n Com funcionalidades como geolocalização, alertas automáticos para contatos de confiança e acesso a informações sobre direitos e serviços de apoio, o aplicativo visa aumentar a autonomia e a segurança da mulher, possibilitando uma resposta ágil em situações emergenciais.\n\nOriginado de um projeto de TCC, maria_ reflete a importância de usar a tecnologia como um recurso de proteção e conscientização, promovendo um ambiente mais seguro e informativo para as mulheres.',
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Outfit',
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w300,
+                                    lineHeight: 1.3,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                child: Container(
+                  width: 406.0,
+                  height: 100.0,
+                  decoration: const BoxDecoration(),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'pra toda maria se sentir segura.',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Outfit',
+                                color: FlutterFlowTheme.of(context).secondary,
+                                fontSize: 22.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -76,7 +76,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.asset(
-                                        'assets/images/Group_75_(1).png',
+                                        'assets/images/Group_75.png',
                                         width: 170.0,
                                         fit: BoxFit.cover,
                                       ),
@@ -91,7 +91,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Faça login e sinta-se segura.',
+                                        'faça login e sinta-se segura.',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -118,7 +118,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               40.0, 100.0, 40.0, 0.0),
                           child: Container(
                             width: 466.0,
-                            height: 100.0,
+                            height: 118.0,
                             decoration: const BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -349,18 +349,40 @@ class _LoginWidgetState extends State<LoginWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              GoRouter.of(context).prepareAuthEvent();
+                              if ((_model.eMailTextController.text != '') &&
+                                  (_model.senhaTextController.text != '')) {
+                                GoRouter.of(context).prepareAuthEvent();
 
-                              final user = await authManager.signInWithEmail(
-                                context,
-                                _model.eMailTextController.text,
-                                _model.senhaTextController.text,
-                              );
-                              if (user == null) {
-                                return;
+                                final user = await authManager.signInWithEmail(
+                                  context,
+                                  _model.eMailTextController.text,
+                                  _model.senhaTextController.text,
+                                );
+                                if (user == null) {
+                                  return;
+                                }
+
+                                context.pushNamedAuth('Home', context.mounted);
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                          'Campos obrigatórios não preenchidos'),
+                                      content: const Text(
+                                          'Os campos de email e senha são obrigatórios para entrar em sua conta.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                               }
-
-                              context.goNamedAuth('Home', context.mounted);
                             },
                             text: 'Entrar :)',
                             options: FFButtonOptions(
@@ -394,18 +416,47 @@ class _LoginWidgetState extends State<LoginWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
                 child: Container(
                   width: 431.0,
-                  height: 100.0,
+                  height: 26.0,
                   decoration: const BoxDecoration(),
-                  child: Text(
-                    'Não possui uma conta? Cadastre-se aqui.',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Outfit',
-                          color: Colors.white,
-                          fontSize: 16.0,
-                          letterSpacing: 0.0,
-                          decoration: TextDecoration.underline,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              'Cadastrar',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
+                          },
+                          child: Text(
+                            'Não possui uma conta? Cadastre-se aqui.',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  decoration: TextDecoration.underline,
+                                ),
+                          ),
                         ),
+                      ),
+                    ],
                   ),
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -17,9 +18,13 @@ void main() async {
 
   await initFirebase();
 
-  await FlutterFlowTheme.initialize();
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -34,7 +39,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+  ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -69,7 +74,6 @@ class _MyAppState extends State<MyApp> {
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
         _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
       });
 
   @override
@@ -84,10 +88,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
-        useMaterial3: false,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
         useMaterial3: false,
       ),
       themeMode: _themeMode,
@@ -121,9 +121,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Home': const HomeWidget(),
       'Sobre': const SobreWidget(),
       'Dicas': const DicasWidget(),
+      'Home': const HomeWidget(),
+      'BO': const BoWidget(),
+      'Perfil': const PerfilWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -135,13 +137,29 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: const Color(0xFFD2D0D0),
+        backgroundColor: const Color(0xFFC3C3C3),
         selectedItemColor: const Color(0xFFE46962),
         unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite_border_sharp,
+              size: 30.0,
+            ),
+            label: 'sobre',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.lightbulb_outline_sharp,
+              size: 24.0,
+            ),
+            label: 'dicas',
+            tooltip: '',
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
@@ -151,23 +169,23 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home_outlined,
               size: 30.0,
             ),
-            label: 'Home',
+            label: 'home',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite_border_sharp,
-              size: 30.0,
-            ),
-            label: 'Sobre',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.question_answer_outlined,
+              Icons.local_police_outlined,
               size: 24.0,
             ),
-            label: 'Dicas',
+            label: 'BO',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.face_3_sharp,
+              size: 24.0,
+            ),
+            label: 'perfil',
             tooltip: '',
           )
         ],

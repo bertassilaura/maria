@@ -7,7 +7,6 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -113,6 +112,44 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'MariaDaPenha',
           path: '/mariaDaPenha',
           builder: (context, params) => const MariaDaPenhaWidget(),
+        ),
+        FFRoute(
+          name: 'CicloDaViolencia',
+          path: '/cicloDaViolencia',
+          builder: (context, params) => const CicloDaViolenciaWidget(),
+        ),
+        FFRoute(
+          name: 'Obrigacoes',
+          path: '/obrigacoes',
+          builder: (context, params) => const ObrigacoesWidget(),
+        ),
+        FFRoute(
+          name: 'TiposViolencia',
+          path: '/tiposViolencia',
+          builder: (context, params) => const TiposViolenciaWidget(),
+        ),
+        FFRoute(
+          name: 'DicaPrevSeg',
+          path: '/dicaPrevSeg',
+          builder: (context, params) => const DicaPrevSegWidget(),
+        ),
+        FFRoute(
+          name: 'Perfil',
+          path: '/perfil',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Perfil')
+              : const PerfilWidget(),
+        ),
+        FFRoute(
+          name: 'BO',
+          path: '/bo',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'BO') : const BoWidget(),
+        ),
+        FFRoute(
+          name: 'Delegacias',
+          path: '/delegacias',
+          builder: (context, params) => const DelegaciasWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -297,14 +334,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/Group_73.png',
+                      width: 200.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )
