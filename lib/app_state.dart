@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -14,48 +13,34 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {
-    prefs = await SharedPreferences.getInstance();
-    _safeInit(() {
-      _phonenumber = prefs.getString('ff_phonenumber') ?? _phonenumber;
-    });
-  }
+  Future initializePersistedState() async {}
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
 
-  late SharedPreferences prefs;
-
-  String _latitude = '';
+  String _latitude = '-23.55052';
   String get latitude => _latitude;
   set latitude(String value) {
     _latitude = value;
   }
 
-  String _longitude = '';
+  String _longitude = '-46.6333';
   String get longitude => _longitude;
   set longitude(String value) {
     _longitude = value;
   }
 
-  String _phonenumber = '';
-  String get phonenumber => _phonenumber;
-  set phonenumber(String value) {
-    _phonenumber = value;
-    prefs.setString('ff_phonenumber', value);
+  String _location = '-23.55052, -46.6333';
+  String get location => _location;
+  set location(String value) {
+    _location = value;
   }
-}
 
-void _safeInit(Function() initializeField) {
-  try {
-    initializeField();
-  } catch (_) {}
-}
-
-Future _safeInitAsync(Function() initializeField) async {
-  try {
-    await initializeField();
-  } catch (_) {}
+  String _adress = 'adress';
+  String get adress => _adress;
+  set adress(String value) {
+    _adress = value;
+  }
 }

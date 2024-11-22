@@ -8,21 +8,19 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GetLocationCall {
+class GoogleMapsLocationCall {
   static Future<ApiCallResponse> call({
-    String? latitude = '',
-    String? longitude = '',
+    double? lat,
+    double? lng,
+    String? apikey = 'AIzaSyCm4OqrUbLeNhdgw9LtgXhSk58e0xzNVm0',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GetLocation',
+      callName: 'Google Maps Location',
       apiUrl:
-          'https://api.ipgeolocation.io/ipgeo?apiKey=04e35a57a9e7479e84086ce31fc42b6a',
+          'https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&key=$apikey',
       callType: ApiCallType.GET,
       headers: {},
-      params: {
-        'latitude': latitude,
-        'longitude': longitude,
-      },
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -31,15 +29,64 @@ class GetLocationCall {
       alwaysAllowBody: false,
     );
   }
+}
 
-  static String? latitude(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.latitude''',
-      ));
-  static String? longitude(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.longitude''',
-      ));
+class OpenCageCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'OpenCage',
+      apiUrl:
+          'GET https://api.opencagedata.com/geocode/v1/json?q=LAT+LON&key=0e1099a08fbb4606a9d4e5fcb96efbbb',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class IPinfoCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'IPinfo',
+      apiUrl: 'https://ipinfo.io/json?token=57dc7cf90d0dbd',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GeoCodeReverseCall {
+  static Future<ApiCallResponse> call({
+    String? lat = '34.17941649999999',
+    String? long = '-118.3790527',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GeoCodeReverse',
+      apiUrl: 'https://geocode.maps.co/reverse?lat=$lat&lon=$long',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {

@@ -7,6 +7,7 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -97,10 +98,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CadastrarWidget(),
         ),
         FFRoute(
-          name: 'Sobre',
-          path: '/sobre',
-          builder: (context, params) =>
-              params.isEmpty ? const NavBarPage(initialPage: 'Sobre') : const SobreWidget(),
+          name: 'Perfil',
+          path: '/perfil',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Perfil')
+              : const PerfilWidget(),
+        ),
+        FFRoute(
+          name: 'Delegacias',
+          path: '/delegacias',
+          builder: (context, params) => const DelegaciasWidget(),
+        ),
+        FFRoute(
+          name: 'AddContact',
+          path: '/addContact',
+          builder: (context, params) => const AddContactWidget(),
+        ),
+        FFRoute(
+          name: 'EditContact',
+          path: '/editContact',
+          builder: (context, params) => const EditContactWidget(),
         ),
         FFRoute(
           name: 'Dicas',
@@ -109,47 +126,42 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               params.isEmpty ? const NavBarPage(initialPage: 'Dicas') : const DicasWidget(),
         ),
         FFRoute(
-          name: 'MariaDaPenha',
-          path: '/mariaDaPenha',
-          builder: (context, params) => const MariaDaPenhaWidget(),
+          name: 'LeiMaria',
+          path: '/leiMaria',
+          builder: (context, params) => const LeiMariaWidget(),
         ),
         FFRoute(
-          name: 'CicloDaViolencia',
-          path: '/cicloDaViolencia',
-          builder: (context, params) => const CicloDaViolenciaWidget(),
+          name: 'Violencia',
+          path: '/violencia',
+          builder: (context, params) => const ViolenciaWidget(),
         ),
         FFRoute(
-          name: 'Obrigacoes',
-          path: '/obrigacoes',
-          builder: (context, params) => const ObrigacoesWidget(),
+          name: 'Prevencao',
+          path: '/prevencao',
+          builder: (context, params) => const PrevencaoWidget(),
         ),
         FFRoute(
-          name: 'TiposViolencia',
-          path: '/tiposViolencia',
-          builder: (context, params) => const TiposViolenciaWidget(),
+          name: 'ObrigacoesOrgaos',
+          path: '/obrigacoesOrgaos',
+          builder: (context, params) => const ObrigacoesOrgaosWidget(),
         ),
         FFRoute(
-          name: 'DicaPrevSeg',
-          path: '/dicaPrevSeg',
-          builder: (context, params) => const DicaPrevSegWidget(),
+          name: 'CicloViolencia',
+          path: '/cicloViolencia',
+          builder: (context, params) => const CicloViolenciaWidget(),
         ),
         FFRoute(
-          name: 'Perfil',
-          path: '/perfil',
+          name: 'BoletinsOcorrencia',
+          path: '/boletinsOcorrencia',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Perfil')
-              : const PerfilWidget(),
+              ? const NavBarPage(initialPage: 'BoletinsOcorrencia')
+              : const BoletinsOcorrenciaWidget(),
         ),
         FFRoute(
-          name: 'BO',
-          path: '/bo',
+          name: 'Sobre',
+          path: '/sobre',
           builder: (context, params) =>
-              params.isEmpty ? const NavBarPage(initialPage: 'BO') : const BoWidget(),
-        ),
-        FFRoute(
-          name: 'Delegacias',
-          path: '/delegacias',
-          builder: (context, params) => const DelegaciasWidget(),
+              params.isEmpty ? const NavBarPage(initialPage: 'Sobre') : const SobreWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -335,12 +347,12 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Colors.transparent,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/Group_73.png',
-                      width: 200.0,
-                      fit: BoxFit.cover,
+                      'assets/images/Group_27.png',
+                      width: 160.0,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

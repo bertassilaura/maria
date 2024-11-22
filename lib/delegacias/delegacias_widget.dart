@@ -1,6 +1,6 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'delegacias_model.dart';
 export 'delegacias_model.dart';
@@ -37,6 +37,36 @@ class _DelegaciasWidgetState extends State<DelegaciasWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          title: Text(
+            'Delegacias virtuais',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: const [],
+          centerTitle: true,
+          elevation: 2.0,
+        ),
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -44,65 +74,10 @@ class _DelegaciasWidgetState extends State<DelegaciasWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                  child: Container(
-                    width: 432.0,
-                    height: 100.0,
-                    decoration: const BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 5.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/Group_73.png',
-                                  width: 160.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Delegacias virtuais',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      fontSize: 28.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 20.0),
                   child: Container(
-                    width: 461.0,
-                    height: 71.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -131,8 +106,7 @@ class _DelegaciasWidgetState extends State<DelegaciasWidget> {
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 20.0),
                   child: Container(
-                    width: 453.0,
-                    height: 1214.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -1489,51 +1463,6 @@ class _DelegaciasWidgetState extends State<DelegaciasWidget> {
                         ),
                       ],
                     ),
-                  ),
-                ),
-                Container(
-                  width: 470.0,
-                  height: 100.0,
-                  decoration: const BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed(
-                            'BO',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        },
-                        text: 'Voltar',
-                        icon: const Icon(
-                          Icons.chevron_left,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Outfit',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],

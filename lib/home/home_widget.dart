@@ -1,10 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -19,6 +23,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   late HomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -41,6 +46,22 @@ class _HomeWidgetState extends State<HomeWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'home',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: const [],
+          centerTitle: true,
+          elevation: 2.0,
+        ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,8 +71,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
                 child: Container(
-                  width: 362.0,
-                  height: 100.0,
+                  width: MediaQuery.sizeOf(context).width * 1.0,
                   decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -85,8 +105,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Outfit',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   fontSize: 18.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
@@ -100,10 +119,9 @@ class _HomeWidgetState extends State<HomeWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 40.0),
               child: Container(
-                width: 303.0,
-                height: 125.0,
+                width: MediaQuery.sizeOf(context).width * 1.0,
                 decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -114,7 +132,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       children: [
                         Flexible(
                           child: Text(
-                            'Ligue para seu contato de emergência. ',
+                            'Ligue para seu contato de emergência',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -137,7 +155,37 @@ class _HomeWidgetState extends State<HomeWidget> {
                               0.0, 15.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              await launchURL('tel:\${phone_number}');
+                              if (currentPhoneNumber != '') {
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  phoneCall:
+                                      '${valueOrDefault(currentUserDocument?.codOp, '')}$currentPhoneNumber',
+                                ));
+                                await launchUrl(Uri(
+                                  scheme: 'tel',
+                                  path: valueOrDefault(
+                                      currentUserDocument?.phoneCall, ''),
+                                ));
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                          'Contato de emergência não informado!'),
+                                      content: const Text(
+                                          'Para realizar essa ação, é necessário que você adicione um contato de emergência.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             },
                             text: 'Ligar',
                             icon: const Icon(
@@ -173,10 +221,9 @@ class _HomeWidgetState extends State<HomeWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 40.0),
               child: Container(
-                width: 303.0,
-                height: 100.0,
+                width: MediaQuery.sizeOf(context).width * 1.0,
                 decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -187,8 +234,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                       children: [
                         Flexible(
                           child: Text(
-                            'Compartilhe sua localização atual.',
-                            textAlign: TextAlign.start,
+                            'Envie uma mensagem de pânico com sua localização',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -210,22 +257,56 @@ class _HomeWidgetState extends State<HomeWidget> {
                               0.0, 15.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              _model.apiResultbej = await GetLocationCall.call(
-                                latitude: FFAppState().latitude,
-                                longitude: FFAppState().longitude,
-                              );
+                              currentUserLocationValue =
+                                  await getCurrentUserLocation(
+                                      defaultLocation: const LatLng(0.0, 0.0));
+                              if (currentPhoneNumber != '') {
+                                _model.apiResultr1l =
+                                    await GoogleMapsLocationCall.call(
+                                  lat: functions
+                                      .convertLatLng(currentUserLocationValue)
+                                      .first,
+                                  lng: functions
+                                      .convertLatLng(currentUserLocationValue)
+                                      .last,
+                                );
 
-                              if ((_model.apiResultbej?.succeeded ?? true)) {
-                                await launchURL(
-                                    'https://wa.me/{{phonenumber}}?text=Atenção, essa é uma mensagem automática de alerta de segurança. Minha localização atual é: https://www.google.com/maps?q={{latitude}},{{longitude}}\n');
+                                if ((_model.apiResultr1l?.succeeded ?? true)) {
+                                  FFAppState().adress = getJsonField(
+                                    (_model.apiResultr1l?.jsonBody ?? ''),
+                                    r'''$.results[0].formatted_address''',
+                                  ).toString();
+                                  safeSetState(() {});
+                                  await launchURL(
+                                      'https://api.whatsapp.com/send?phone=55$currentPhoneNumber&text=Essa é uma mensagem automática do meu aplicativo de segurança pessoal. Por favor, entre em contato comigo ou verifique minha localização atual: ${FFAppState().adress}');
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: const Text('Ops...'),
+                                        content: const Text(
+                                            'Houve algum erro ao obter sua localização.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
                               } else {
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: const Text('Erro de envio'),
+                                      title: const Text(
+                                          'Contato de emergência não informado.'),
                                       content: const Text(
-                                          'Infelizmente ocorreu um erro ao compartilhar sua localização.'),
+                                          'Para essa ação, adicione um contato de emergência.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -240,9 +321,9 @@ class _HomeWidgetState extends State<HomeWidget> {
 
                               safeSetState(() {});
                             },
-                            text: 'Compartilhar',
+                            text: 'Enviar',
                             icon: const Icon(
-                              Icons.location_on,
+                              Icons.location_on_rounded,
                               size: 30.0,
                             ),
                             options: FFButtonOptions(
@@ -274,8 +355,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               ),
             ),
             Container(
-              width: 303.0,
-              height: 100.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
               decoration: const BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -286,7 +366,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       Flexible(
                         child: Text(
-                          'Inicie uma chamada falsa.',
+                          'Inicie uma chamada falsa',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(

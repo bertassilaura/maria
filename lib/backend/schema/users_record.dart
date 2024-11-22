@@ -45,6 +45,21 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "cod_op" field.
+  String? _codOp;
+  String get codOp => _codOp ?? '';
+  bool hasCodOp() => _codOp != null;
+
+  // "phone_call" field.
+  String? _phoneCall;
+  String get phoneCall => _phoneCall ?? '';
+  bool hasPhoneCall() => _phoneCall != null;
+
+  // "current_location" field.
+  String? _currentLocation;
+  String get currentLocation => _currentLocation ?? '';
+  bool hasCurrentLocation() => _currentLocation != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -52,6 +67,9 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _codOp = snapshotData['cod_op'] as String?;
+    _phoneCall = snapshotData['phone_call'] as String?;
+    _currentLocation = snapshotData['current_location'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -94,6 +112,9 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  String? codOp,
+  String? phoneCall,
+  String? currentLocation,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +124,9 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
+      'cod_op': codOp,
+      'phone_call': phoneCall,
+      'current_location': currentLocation,
     }.withoutNulls,
   );
 
@@ -119,7 +143,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.codOp == e2?.codOp &&
+        e1?.phoneCall == e2?.phoneCall &&
+        e1?.currentLocation == e2?.currentLocation;
   }
 
   @override
@@ -129,7 +156,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.codOp,
+        e?.phoneCall,
+        e?.currentLocation
       ]);
 
   @override

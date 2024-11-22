@@ -1,26 +1,26 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'bo_model.dart';
-export 'bo_model.dart';
+import 'obrigacoes_orgaos_model.dart';
+export 'obrigacoes_orgaos_model.dart';
 
-class BoWidget extends StatefulWidget {
-  const BoWidget({super.key});
+class ObrigacoesOrgaosWidget extends StatefulWidget {
+  const ObrigacoesOrgaosWidget({super.key});
 
   @override
-  State<BoWidget> createState() => _BoWidgetState();
+  State<ObrigacoesOrgaosWidget> createState() => _ObrigacoesOrgaosWidgetState();
 }
 
-class _BoWidgetState extends State<BoWidget> {
-  late BoModel _model;
+class _ObrigacoesOrgaosWidgetState extends State<ObrigacoesOrgaosWidget> {
+  late ObrigacoesOrgaosModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BoModel());
+    _model = createModel(context, () => ObrigacoesOrgaosModel());
   }
 
   @override
@@ -37,6 +37,36 @@ class _BoWidgetState extends State<BoWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          title: Text(
+            'Órgãos Públicos',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: const [],
+          centerTitle: true,
+          elevation: 2.0,
+        ),
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -44,28 +74,58 @@ class _BoWidgetState extends State<BoWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 15.0),
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
                   child: Container(
-                    width: 458.0,
-                    height: 101.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    decoration: const BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            'As obrigações dos órgãos públicos no combate à violência contra a mulher são pautadas pela Constituição Federal e pela legislação específica, principalmente a Lei Maria da Penha. Essa lei prevê que o poder público, em todos os seus níveis — municipal, estadual e federal —, deve atuar de forma integrada para garantir que as mulheres em situação de violência recebam atendimento especializado, proteção imediata e acesso a serviços de acolhimento e apoio psicológico.\n\nConfira abaixo as obrigações de cada um dos órgãos.',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 5.0),
+                              0.0, 0.0, 0.0, 15.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/Group_73.png',
-                                  width: 170.0,
-                                  fit: BoxFit.cover,
-                                ),
+                              Text(
+                                '1. Delegacia de Defesa da Mulher',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               ),
                             ],
                           ),
@@ -76,40 +136,7 @@ class _BoWidgetState extends State<BoWidget> {
                           children: [
                             Flexible(
                               child: Text(
-                                'boletins de ocorrência',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      fontSize: 28.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
-                  child: Container(
-                    width: 444.0,
-                    height: 195.0,
-                    decoration: const BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                'Nessa página, você encontra instruções básicas para o registro do seu boletim de ocorrência e o respectivo link da delegacia online do seu estado.\n\nO procedimento pode variar de acordo com o estado brasileiro em que você se encontra, já que cada um possui uma plataforma própria para o registro de ocorrências online.',
+                                '➜ Registrar denúncias de violência e encaminhar as vítimas para serviços de apoio.\n➜ Solicitar medidas protetivas de urgência ao Judiciário, quando necessário.\n➜ Encaminhar a vítima para atendimento especializado, como centros de referência e apoio psicológico.',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -131,97 +158,48 @@ class _BoWidgetState extends State<BoWidget> {
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
                   child: Container(
-                    width: 502.0,
-                    height: 252.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
+                              0.0, 0.0, 0.0, 15.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Flexible(
-                                child: Text(
-                                  ' 1. Acesse o site da Delegacia Eletrônica do seu estado',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
+                              Text(
+                                '2. Sistema Judiciário',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               ),
                             ],
                           ),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 30.0),
-                                child: Text(
-                                  'Cada estado brasileiro tem um site próprio para o registro de ocorrências online. Seu boletim deve ser registrado no estado de ocorrência do crime. Clique no botão abaixo e encontre o site correto. ',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ],
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed(
-                                  'Delegacias',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType:
-                                          PageTransitionType.leftToRight,
-                                    ),
-                                  },
-                                );
-                              },
-                              text: 'Delegacias virtuais',
-                              icon: const Icon(
-                                Icons.policy,
-                                size: 25.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: 250.0,
-                                height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).secondary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
+                            Flexible(
+                              child: Text(
+                                '➜ Emitir medidas protetivas de urgência para afastar o agressor da vítima e impedir contato.\n➜ Garantir agilidade no julgamento dos casos de violência doméstica para evitar a revitimização da mulher.\n➜ Aplicar as penas e sanções previstas na Lei Maria da Penha e em outras legislações de proteção.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: Colors.white,
+                                      fontSize: 16.0,
                                       letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w300,
                                     ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                           ],
@@ -234,22 +212,133 @@ class _BoWidgetState extends State<BoWidget> {
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
                   child: Container(
-                    width: 502.0,
-                    height: 156.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
+                              0.0, 0.0, 0.0, 15.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Flexible(
                                 child: Text(
-                                  '2. Escolha o tipo de ocorrência',
+                                  '3. Ministério Público',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                '➜ Fazer a denúncia dos casos de violência ao Judiciário, buscando a responsabilização do agressor.\n➜ Fiscalizar a atuação dos órgãos de proteção para garantir que as vítimas recebam o atendimento adequado.\n➜Atuar em ações de conscientização e prevenção à violência nas comunidades.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    decoration: const BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 15.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  '4. Sistema de Saúde',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                '➜ Atendimento médico emergencial para mulheres vítimas de violência física e sexual.\n➜ Encaminhamento para serviços de apoio psicológico e social.\n➜Registro de violência em prontuários e notificação compulsória dos casos, permitindo que estatísticas sejam geradas para auxiliar em políticas públicas.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    decoration: const BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 15.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  '5. Centros de Referência e Casas de Abrigo',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -266,23 +355,20 @@ class _BoWidgetState extends State<BoWidget> {
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Flexible(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 30.0),
-                                child: Text(
-                                  'No site, geralmente há uma lista de tipos de ocorrência que podem ser registrados online. Procure por algo relacionado à violência doméstica ou à Lei Maria da Penha. Em alguns estados, já existe uma opção específica para casos de violência doméstica.',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                ),
+                              child: Text(
+                                '➜ Oferecer abrigo temporário para mulheres e seus filhos, em casos de risco de morte.\n➜ Fornecer apoio psicológico, social e jurídico, ajudando na reestruturação emocional e financeira da vítima.\n➜Auxiliar na inserção ou reinserção no mercado de trabalho, promovendo a autonomia financeira da mulher.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                               ),
                             ),
                           ],
@@ -295,23 +381,21 @@ class _BoWidgetState extends State<BoWidget> {
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
                   child: Container(
-                    width: 502.0,
-                    height: 197.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
+                              0.0, 0.0, 0.0, 15.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Flexible(
                                 child: Text(
-                                  '3. Preencha os dados necessários',
-                                  textAlign: TextAlign.center,
+                                  '6. Assistência Social',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -327,127 +411,23 @@ class _BoWidgetState extends State<BoWidget> {
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Flexible(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 30.0),
-                                child: Text(
-                                  'Na maioria dos casos, você precisará fornecer:\n\n➜ Seus dados pessoais (nome, endereço, contato);\n➜ Descrição do ocorrido (data, local, relato detalhado);\n➜ Informações sobre o agressor, se possível.',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                ),
+                              child: Text(
+                                '➜ Oferecer apoio psicossocial para mulheres em situação de violência e para seus filhos.\n➜ Orientar sobre direitos e benefícios assistenciais, como o acesso a auxílios e programas sociais.\n➜ Apoiar no planejamento de uma vida autônoma e segura, auxiliando na inserção laboral e no fortalecimento da autoestima.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                               ),
                             ),
                           ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
-                  child: Container(
-                    width: 502.0,
-                    height: 170.0,
-                    decoration: const BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  '4. Acompanhamento e medidas adicionais',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 30.0),
-                                child: Text(
-                                  'Após o envio, a Delegacia da Mulher ou a Polícia Civil pode entrar em contato para mais detalhes ou para agendar uma ida ao local para finalização do processo e/ou providências de proteção, como medidas protetivas.',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
-                  child: Container(
-                    width: 502.0,
-                    height: 114.0,
-                    decoration: const BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  'Em casos de emergência, ligue diretamente para o 190 ou para a Central de Atendimento à Mulher – Ligue 180.',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                       ],
                     ),

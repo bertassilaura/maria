@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'perfil_model.dart';
 export 'perfil_model.dart';
 
@@ -27,18 +26,6 @@ class _PerfilWidgetState extends State<PerfilWidget> {
 
     _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
-
-    _model.nomeContatoTextController ??= TextEditingController();
-    _model.nomeContatoFocusNode ??= FocusNode();
-
-    _model.contatoEmergenciaTextController ??= TextEditingController();
-    _model.contatoEmergenciaFocusNode ??= FocusNode();
-
-    _model.editarNomeTextController ??= TextEditingController();
-    _model.editarNomeFocusNode ??= FocusNode();
-
-    _model.editarNumeroTextController ??= TextEditingController();
-    _model.editarNumeroFocusNode ??= FocusNode();
   }
 
   @override
@@ -50,13 +37,30 @@ class _PerfilWidgetState extends State<PerfilWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+          automaticallyImplyLeading: false,
+          actions: const [],
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text(
+              'Perfil',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Outfit',
+                    color: Colors.white,
+                    fontSize: 22.0,
+                    letterSpacing: 0.0,
+                  ),
+            ),
+            centerTitle: true,
+            expandedTitleScale: 1.0,
+          ),
+          elevation: 2.0,
+        ),
         body: SafeArea(
           top: true,
           child: StreamBuilder<List<UsersRecord>>(
@@ -96,61 +100,10 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 15.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          30.0, 40.0, 30.0, 30.0),
                       child: Container(
-                        width: 458.0,
-                        height: 101.0,
-                        decoration: const BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 5.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/Group_73.png',
-                                      width: 170.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'perfil',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        fontSize: 25.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
-                      child: Container(
-                        width: 518.0,
-                        height: 63.0,
+                        width: MediaQuery.sizeOf(context).width * 1.0,
                         decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -200,8 +153,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
                       child: Container(
-                        width: 518.0,
-                        height: 191.0,
+                        width: MediaQuery.sizeOf(context).width * 1.0,
                         decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -416,10 +368,9 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                          const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 45.0),
                       child: Container(
-                        width: 448.0,
-                        height: 151.0,
+                        width: MediaQuery.sizeOf(context).width * 1.0,
                         decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -457,7 +408,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          'Este é o contato que será acionado em ligações de emergência e envio de localização.',
+                                          'Este é o contato que será acionado em ligações de emergência e envio de mensagens de pânico.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -473,15 +424,15 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 5.0),
+                                      20.0, 10.0, 20.0, 5.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
+                                            0.0, 0.0, 5.0, 0.0),
                                         child: Icon(
-                                          Icons.contact_phone_rounded,
+                                          Icons.contact_phone,
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           size: 24.0,
@@ -507,693 +458,170 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                     ],
                                   ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 20.0, 20.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        valueOrDefault<String>(
+                                          columnUsersRecord?.phoneNumber,
+                                          'Número',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      valueOrDefault<String>(
-                                        columnUsersRecord?.phoneNumber,
-                                        'Contato',
+                                    if ((columnUsersRecord?.displayName ==
+                                                null ||
+                                            columnUsersRecord?.displayName ==
+                                                '') &&
+                                        (columnUsersRecord?.phoneNumber ==
+                                                null ||
+                                            columnUsersRecord?.phoneNumber ==
+                                                ''))
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed('AddContact');
+                                        },
+                                        text: 'Adicionar contato',
+                                        icon: const Icon(
+                                          Icons.add,
+                                          size: 15.0,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
                                   ],
                                 ),
+                                if ((currentUserDisplayName != '') &&
+                                    (currentPhoneNumber != ''))
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              context.pushNamed('EditContact');
+                                            },
+                                            text: 'Editar contato',
+                                            icon: const Icon(
+                                              Icons.edit_rounded,
+                                              size: 15.0,
+                                            ),
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                               ],
                             ),
                           ],
                         ),
                       ),
                     ),
-                    if ((columnUsersRecord?.displayName == null ||
-                            columnUsersRecord?.displayName == '') &&
-                        (columnUsersRecord?.phoneNumber == null ||
-                            columnUsersRecord?.phoneNumber == ''))
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
-                          width: 302.0,
-                          height: 212.0,
-                          decoration: const BoxDecoration(),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  elevation: 5.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: Text(
-                                          'Novo contato',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                fontSize: 18.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 200.0,
-                                        child: TextFormField(
-                                          controller:
-                                              _model.nomeContatoTextController,
-                                          focusNode:
-                                              _model.nomeContatoFocusNode,
-                                          onFieldSubmitted: (_) async {
-                                            await columnUsersRecord!.reference
-                                                .update(createUsersRecordData(
-                                              displayName: _model
-                                                  .nomeContatoTextController
-                                                  .text,
-                                            ));
-                                          },
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            hintText: 'Nome',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Outfit',
-                                                      color: const Color(0xFF6F6F6F),
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                letterSpacing: 0.0,
-                                              ),
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          validator: _model
-                                              .nomeContatoTextControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: SizedBox(
-                                          width: 200.0,
-                                          child: TextFormField(
-                                            controller: _model
-                                                .contatoEmergenciaTextController,
-                                            focusNode: _model
-                                                .contatoEmergenciaFocusNode,
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              hintText: 'Número',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            const Color(0xFF6F6F6F),
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                            keyboardType: TextInputType.phone,
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            validator: _model
-                                                .contatoEmergenciaTextControllerValidator
-                                                .asValidator(context),
-                                            inputFormatters: [
-                                              _model.contatoEmergenciaMask
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 10.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            if ((_model.nomeContatoTextController
-                                                            .text !=
-                                                        '') &&
-                                                (_model.contatoEmergenciaTextController
-                                                            .text !=
-                                                        '')) {
-                                              await columnUsersRecord!.reference
-                                                  .update(createUsersRecordData(
-                                                phoneNumber: _model
-                                                    .contatoEmergenciaTextController
-                                                    .text,
-                                                displayName: _model
-                                                    .nomeContatoTextController
-                                                    .text,
-                                              ));
-                                              FFAppState().phonenumber =
-                                                  FFAppState().phonenumber;
-                                              safeSetState(() {});
-                                            } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: const Text(
-                                                        'Campos obrigatórios não preenchidos ou preenchidos incorretamente'),
-                                                    content: const Text(
-                                                        'Para inserir o contato de emergência, os campos devem estar preenchidos e no formato correto.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            }
-                                          },
-                                          text: 'Adicionar',
-                                          icon: const Icon(
-                                            Icons.add,
-                                            size: 15.0,
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Outfit',
-                                                      color: Colors.white,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 200.0,
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                      child: Container(
+                        width: 522.0,
+                        height: 57.0,
+                        decoration: const BoxDecoration(),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FFButtonWidget(
+                              onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
+                                context.goNamedAuth('Login', context.mounted);
+                              },
+                              text: 'Sair',
+                              icon: const Icon(
+                                Icons.login_outlined,
+                                size: 15.0,
                               ),
-                            ],
-                          ),
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: const Color(0xFF909090),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    if ((columnUsersRecord?.phoneNumber != null &&
-                            columnUsersRecord?.phoneNumber != '') &&
-                        (columnUsersRecord?.displayName != null &&
-                            columnUsersRecord?.displayName != ''))
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                        child: Container(
-                          width: 304.0,
-                          height: 100.0,
-                          decoration: const BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 15.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        width: 200.0,
-                                        child: TextFormField(
-                                          controller:
-                                              _model.editarNomeTextController,
-                                          focusNode: _model.editarNomeFocusNode,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            hintText: 'editar nome',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Outfit',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                letterSpacing: 0.0,
-                                              ),
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          validator: _model
-                                              .editarNomeTextControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (_model.editarNomeTextController
-                                                      .text !=
-                                                  '') {
-                                            await columnUsersRecord!.reference
-                                                .update(createUsersRecordData(
-                                              displayName: _model
-                                                  .editarNomeTextController
-                                                  .text,
-                                            ));
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: const Text(
-                                                      'Preencha o campo de nome para atualizá-lo.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: const Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-                                        },
-                                        text: 'Editar',
-                                        icon: const Icon(
-                                          Icons.edit,
-                                          color: Colors.white,
-                                          size: 15.0,
-                                        ),
-                                        options: FFButtonOptions(
-                                          height: 38.0,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 15.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        width: 200.0,
-                                        child: TextFormField(
-                                          controller:
-                                              _model.editarNumeroTextController,
-                                          focusNode:
-                                              _model.editarNumeroFocusNode,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            hintText: 'editar número',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Outfit',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                letterSpacing: 0.0,
-                                              ),
-                                          keyboardType: TextInputType.phone,
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          validator: _model
-                                              .editarNumeroTextControllerValidator
-                                              .asValidator(context),
-                                          inputFormatters: [
-                                            _model.editarNumeroMask
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (_model.editarNumeroTextController
-                                                      .text !=
-                                                  '') {
-                                            await columnUsersRecord!.reference
-                                                .update(createUsersRecordData(
-                                              phoneNumber: _model
-                                                  .editarNumeroTextController
-                                                  .text,
-                                            ));
-                                            FFAppState().phonenumber =
-                                                FFAppState().phonenumber;
-                                            safeSetState(() {});
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: const Text(
-                                                      'Preencha o campo de número para atualizá-lo.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: const Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-                                        },
-                                        text: 'Editar',
-                                        icon: const Icon(
-                                          Icons.edit,
-                                          color: Colors.white,
-                                          size: 15.0,
-                                        ),
-                                        options: FFButtonOptions(
-                                          height: 38.0,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    ),
                   ],
                 ),
               );

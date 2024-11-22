@@ -124,7 +124,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Sobre': const SobreWidget(),
       'Dicas': const DicasWidget(),
       'Home': const HomeWidget(),
-      'BO': const BoWidget(),
+      'BoletinsOcorrencia': const BoletinsOcorrenciaWidget(),
       'Perfil': const PerfilWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -146,15 +146,15 @@ class _NavBarPageState extends State<NavBarPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite_border_sharp,
-              size: 30.0,
+              Icons.favorite_rounded,
+              size: 24.0,
             ),
             label: 'sobre',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.lightbulb_outline_sharp,
+              Icons.wechat_sharp,
               size: 24.0,
             ),
             label: 'dicas',
@@ -174,10 +174,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.local_police_outlined,
+              Icons.local_police_sharp,
               size: 24.0,
             ),
-            label: 'BO',
+            label: 'boletins',
             tooltip: '',
           ),
           BottomNavigationBarItem(

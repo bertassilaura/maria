@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'maria_da_penha_widget.dart' show MariaDaPenhaWidget;
+import 'ciclo_violencia_widget.dart' show CicloViolenciaWidget;
 import 'package:flutter/material.dart';
 
-class MariaDaPenhaModel extends FlutterFlowModel<MariaDaPenhaWidget> {
+class CicloViolenciaModel extends FlutterFlowModel<CicloViolenciaWidget> {
   @override
   void initState(BuildContext context) {}
 

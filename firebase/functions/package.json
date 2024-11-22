@@ -18,10 +18,10 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
-    "serve": "firebase -P maria-4e4eb emulators:start --only functions",
-    "shell": "firebase -P maria-4e4eb functions:shell",
+    "serve": "firebase -P mariatcc-104ea emulators:start --only functions",
+    "shell": "firebase -P mariatcc-104ea functions:shell",
     "start": "npm run shell",
-    "logs": "firebase -P maria-4e4eb functions:log",
+    "logs": "firebase -P mariatcc-104ea functions:log",
     "compile": "cp ../../tsconfig.template.json ./tsconfig-compile.json && tsc --project tsconfig-compile.json"
   },
   "engines": {

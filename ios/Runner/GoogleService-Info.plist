@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDb9stA-dbAYKmUCERTIBza-HjVXJ8qTtw</string>
+	<string>AIzaSyBKwbylVL2aHgdYCPuGb7420mGwXGCXP4w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>649511301140</string>
+	<string>27829069749</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.mycompany.maria</string>
 	<key>PROJECT_ID</key>
-	<string>maria-4e4eb</string>
+	<string>mariatcc-104ea</string>
 	<key>STORAGE_BUCKET</key>
-	<string>maria-4e4eb.appspot.com</string>
+	<string>mariatcc-104ea.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:649511301140:ios:5963263d282b3ea8fab701</string>
+	<string>1:27829069749:ios:498aa5d6c1055f425ddbfc</string>
+	<key>DATABASE_URL</key>
+	<string>https://mariatcc-104ea-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

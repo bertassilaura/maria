@@ -53,9 +53,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Você necessita habilitar a permissão de acesso à localização do seu telefone para uso das funcionalidades.</string>
+    <string>Por favor, habilite a localização do seu dispositivo.</string>
+
 
 
 	<key>UILaunchStoryboardName</key>

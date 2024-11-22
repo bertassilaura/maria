@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "649511301140",
-    "project_id": "maria-4e4eb",
-    "storage_bucket": "maria-4e4eb.appspot.com"
+    "project_number": "27829069749",
+    "firebase_url": "https://mariatcc-104ea-default-rtdb.firebaseio.com",
+    "project_id": "mariatcc-104ea",
+    "storage_bucket": "mariatcc-104ea.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:649511301140:android:454b409702a42decfab701",
+        "mobilesdk_app_id": "1:27829069749:android:0d2cf58818743dba5ddbfc",
         "android_client_info": {
           "package_name": "com.mycompany.maria"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDJVb9GPBSaJ33A6XxPfVJoyHRJZxjGWv4"
+          "current_key": "AIzaSyAM_K-dF4deYsvfQwuiHTlLen7PDFPR9ig"
         }
       ],
       "services": {

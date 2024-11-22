@@ -7,8 +7,8 @@ import 'package:just_audio/just_audio.dart';
 class HomeModel extends FlutterFlowModel<HomeWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (GetLocation)] action in Button widget.
-  ApiCallResponse? apiResultbej;
+  // Stores action output result for [Backend Call - API (Google Maps Location)] action in Button widget.
+  ApiCallResponse? apiResultr1l;
   AudioPlayer? soundPlayer;
 
   @override

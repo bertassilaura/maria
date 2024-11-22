@@ -1,26 +1,26 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'tipos_violencia_model.dart';
-export 'tipos_violencia_model.dart';
+import 'violencia_model.dart';
+export 'violencia_model.dart';
 
-class TiposViolenciaWidget extends StatefulWidget {
-  const TiposViolenciaWidget({super.key});
+class ViolenciaWidget extends StatefulWidget {
+  const ViolenciaWidget({super.key});
 
   @override
-  State<TiposViolenciaWidget> createState() => _TiposViolenciaWidgetState();
+  State<ViolenciaWidget> createState() => _ViolenciaWidgetState();
 }
 
-class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
-  late TiposViolenciaModel _model;
+class _ViolenciaWidgetState extends State<ViolenciaWidget> {
+  late ViolenciaModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TiposViolenciaModel());
+    _model = createModel(context, () => ViolenciaModel());
   }
 
   @override
@@ -37,6 +37,36 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          title: Text(
+            'Tipos de violência',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: const [],
+          centerTitle: true,
+          elevation: 2.0,
+        ),
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -47,66 +77,10 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 0.0),
                   child: Container(
-                    width: 432.0,
-                    height: 97.0,
-                    decoration: const BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Group_73.png',
-                                width: 169.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  'tipos de violência',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        fontSize: 25.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 0.0),
-                  child: Container(
-                    width: 461.0,
-                    height: 202.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Flexible(
                           child: Text(
@@ -119,7 +93,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w300,
-                                  lineHeight: 1.3,
                                 ),
                           ),
                         ),
@@ -129,10 +102,9 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 0.0),
                   child: Container(
-                    width: 453.0,
-                    height: 405.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -151,8 +123,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -175,7 +145,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
-                                      lineHeight: 1.3,
                                     ),
                               ),
                             ),
@@ -187,10 +156,9 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
                   child: Container(
-                    width: 453.0,
-                    height: 496.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -209,8 +177,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -233,7 +199,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
-                                      lineHeight: 1.3,
                                     ),
                               ),
                             ),
@@ -245,10 +210,9 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
                   child: Container(
-                    width: 453.0,
-                    height: 491.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -267,8 +231,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -291,7 +253,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
-                                      lineHeight: 1.3,
                                     ),
                               ),
                             ),
@@ -303,10 +264,9 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
                   child: Container(
-                    width: 453.0,
-                    height: 513.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -325,8 +285,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -349,7 +307,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
-                                      lineHeight: 1.3,
                                     ),
                               ),
                             ),
@@ -361,10 +318,9 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
                   child: Container(
-                    width: 453.0,
-                    height: 517.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -383,8 +339,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -398,7 +352,7 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                           children: [
                             Flexible(
                               child: Text(
-                                'A violência moral inclui atitudes e palavras que visam difamar, caluniar ou humilhar a vítima, afetando sua imagem e reputação. Essa forma de violência pode ser exercida através de mentiras, acusações infundadas e difamações públicas ou privadas. Em um contexto de violência doméstica, a violência moral é frequentemente usada para enfraquecer a autoestima da mulher e mantê-la em uma posição de submissão.\n\nExemplos de violência moral:\n\n➜ Acusações falsas de traição ou outras ofensas.\n➜ Calúnia e difamação, propagando mentiras sobre a mulher.\n➜ Divulgar informações pessoais ou constrangedoras sem o consentimento da vítima.\n➜ Ofensas que desvalorizem a moral e a dignidade da mulher.\n\n',
+                                'A violência moral inclui atitudes e palavras que visam difamar, caluniar ou humilhar a vítima, afetando sua imagem e reputação. Essa forma de violência pode ser exercida através de mentiras, acusações infundadas e difamações públicas ou privadas. Em um contexto de violência doméstica, a violência moral é frequentemente usada para enfraquecer a autoestima da mulher e mantê-la em uma posição de submissão.\n\nExemplos de violência moral:\n\n➜ Acusações falsas de traição ou outras ofensas.\n➜ Calúnia e difamação, propagando mentiras sobre a mulher.\n➜ Divulgar informações pessoais ou constrangedoras sem o consentimento da vítima.\n➜ Ofensas que desvalorizem a moral e a dignidade da mulher.',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -407,7 +361,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
-                                      lineHeight: 1.3,
                                     ),
                               ),
                             ),
@@ -415,49 +368,6 @@ class _TiposViolenciaWidgetState extends State<TiposViolenciaWidget> {
                         ),
                       ],
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed(
-                            'Dicas',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        },
-                        text: 'Voltar',
-                        icon: const Icon(
-                          Icons.chevron_left,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Outfit',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],
