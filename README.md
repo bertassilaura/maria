@@ -1,6 +1,6 @@
 # maria
 
-Aplicativo de segurança pessoal da mulher desenvolvido na disciplina de Projetos II da Universidade Federal de Santa Catarina.
+A new Flutter project.
 
 ## Getting Started
 
